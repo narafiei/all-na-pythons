@@ -1,0 +1,11 @@
+import pandas as pd
+df= pd.read_csv("salaries.csv")
+from sklearn.preprocessing import LabelEncoder
+x= df.drop(['salary_more_then_100k'], axis=1)
+y= df['salary_more_then_100k']
+le_company=LabelEncoder()
+le_job=LabelEncoder()
+le_degree=LabelEncoder()
+x['company_n'] = le_company.fit_transform(x['company'])
+x['job_n'] = le_job.fit_transform(x['job'])
+x['degree_n'] = le_degree.fit_transform(x['degree'])
